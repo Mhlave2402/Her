@@ -1,0 +1,11 @@
+{
+    "name": "SplitPaymentManagement",
+    "alias": "splitpaymentmanagement",
+    "description": "Handles split payment functionality.",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\SplitPaymentManagement\\Providers\\SplitPaymentManagementServiceProvider"
+    ],
+    "files": []
+}

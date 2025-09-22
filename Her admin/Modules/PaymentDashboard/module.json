@@ -1,0 +1,11 @@
+{
+    "name": "PaymentDashboard",
+    "alias": "paymentdashboard",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\PaymentDashboard\\Providers\\PaymentDashboardServiceProvider"
+    ],
+    "files": []
+}

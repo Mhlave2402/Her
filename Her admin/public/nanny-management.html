@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nanny Management</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-5">Nanny Management</h2>
+        <table class="table mt-3">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Verified</th>
+                    <th>Service Fee</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="nannies-tbody">
+            </tbody>
+        </table>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        const nanniesTbody = document.getElementById('nannies-tbody');
+
+        function fetchNannies() {
+            axios.get('/api/nannies')
+                .then(response => {
+                    const nannies = response.data;
+                    nanniesTbody.innerHTML = '';
+                    nannies.forEach(nanny => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${nanny.first_name} ${nanny.last_name}</td>
+                            <td>${nanny.email}</td>
+                            <td><input type="checkbox" ${nanny.is_kids_only_verified ? 'checked' : ''} onchange="verifyNanny(${nanny.id}, this.checked)"></td>
+                            <td><input type="number" value="${nanny.nanny_service_fee}" onchange="setFee(${nanny.id}, this.value)"></td>
+                            <td><button class="btn btn-primary" onclick="saveChanges(${nanny.id})">Save</button></td>
+                        `;
+                        nanniesTbody.appendChild(row);
+                    });
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+
+        function verifyNanny(id, isVerified) {
+            axios.put(`/api/nannies/${id}/verify`, { is_verified: isVerified })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+
+        function setFee(id, fee) {
+            axios.put(`/api/nannies/${id}/fee`, { fee: fee })
+                .catch(error => {
+                    console.error(error);
+                });
+        }
+
+        function saveChanges(id) {
+            const row = event.target.closest('tr');
+            const isVerified = row.querySelector('input[type="checkbox"]').checked;
+            const fee = row.querySelector('input[type="number"]').value;
+
+            verifyNanny(id, isVerified);
+            setFee(id, fee);
+        }
+
+        fetchNannies();
+    </script>
+</body>
+</html>

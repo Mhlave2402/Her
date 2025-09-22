@@ -1,0 +1,30 @@
+{
+    "name": "nwidart/paymentdashboard",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\PaymentDashboard\\": "app/",
+            "Modules\\PaymentDashboard\\Database\\Factories\\": "database/factories/",
+            "Modules\\PaymentDashboard\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\PaymentDashboard\\Tests\\": "tests/"
+        }
+    }
+}

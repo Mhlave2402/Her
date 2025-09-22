@@ -1,0 +1,11 @@
+{
+    "name": "SOSManagement",
+    "alias": "sosmanagement",
+    "description": "Handles SOS alerts from users and drivers.",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\SOSManagement\\Providers\\SOSManagementServiceProvider"
+    ],
+    "files": []
+}

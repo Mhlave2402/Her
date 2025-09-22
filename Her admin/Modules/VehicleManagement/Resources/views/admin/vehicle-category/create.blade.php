@@ -1,0 +1,34 @@
+@extends('adminmodule::layouts.master')
+
+@section('title',translate('add_vehicle_category'))
+
+@section('content')
+    <div class="main-content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="page-title-wrap mb-3">
+                        <h2 class="page-title">{{translate('add_vehicle_category')}}</h2>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <form action="{{route('admin.vehicle.category.store')}}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="name">{{translate('name')}}</label>
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Ex: GoMini" value="{{old('name')}}" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="rank">{{translate('rank')}}</label>
+                                    <input type="number" class="form-control" name="rank" id="rank" placeholder="Ex: 1" value="{{old('rank')}}" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">{{translate('submit')}}</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

@@ -1,0 +1,11 @@
+{
+    "name": "GiftCardManagement",
+    "alias": "giftcardmanagement",
+    "description": "Handles gift card functionality.",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\GiftCardManagement\\Providers\\GiftCardManagementServiceProvider"
+    ],
+    "files": []
+}
